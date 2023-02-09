@@ -5,8 +5,8 @@ const cpfService = new CPFService();
 
 export default class CPFController {
   public create = async (req: Request, res: Response) => {
-    const cpf = req.body;
+    const { cpf } = req.body;
     const newCpf = await cpfService.create(cpf);
-    return newCpf;
+    res.status(200).json(newCpf)
   }
 }
