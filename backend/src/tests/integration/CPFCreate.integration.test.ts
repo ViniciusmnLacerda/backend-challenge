@@ -20,7 +20,7 @@ const { expect } = chai;
 
 const cpfService = new CPFService();
 
-describe('CPF integration tests', function() {
+describe('CPF integration tests - POST /cpf', function() {
   afterEach(function() {
     sinon.restore()
   });
