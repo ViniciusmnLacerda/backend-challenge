@@ -10,10 +10,7 @@ const errorMiddleware: ErrorRequestHandler = (
   if (err instanceof ErrorClient) {
     return res.status(err.statusCode).json({ type: err.type, message: err.message });
   }
-  
 
-    console.log('a1ui: ', err);
-    
   return res.status(500).json({ message: 'Internal error' });
 };
 

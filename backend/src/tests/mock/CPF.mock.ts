@@ -13,4 +13,7 @@ const CPFs = [
   }
 ]
 
-export { CPFs }
+const CPFInUse = "92238233318"
+const unsedCPF = "25479514792"
+
+export { CPFs, CPFInUse, unsedCPF }
