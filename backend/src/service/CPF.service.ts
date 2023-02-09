@@ -16,7 +16,6 @@ export default class CPFService {
     return userCPF;
   }
 
-
   public create =  async (cpf: string) => {
     const isCPFAlreadyInUse = await this.findOne(cpf);
     if (isCPFAlreadyInUse) throw new ErrorClient(422, 'ExistsCpfException', 'CPF is already in use');
