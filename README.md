@@ -18,7 +18,7 @@ cd backend-challenge && cd backend && npm install
 ## Executando os containers do docker
 
   ```
-  cd backend-challenge && cd backend && docker-compose up -d --build
+  cd backend-challenge && docker-compose up -d --build
   ```
 Este comando irá iniciar os containers chamados ```db``` e ```app_backend```
 O servidor do backend já está disponível e é possível interagir com a API.
