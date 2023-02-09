@@ -18,9 +18,10 @@ cd backend-challenge && cd backend && npm install
 ## Executando os containers do docker
 
   ```
-  cd backend-challenge && docker-compose up -d --build
+  cd backend-challenge && docker-compose up -d --build && cd backend && npm run db:reset
   ```
-Este comando irá iniciar os containers chamados ```db``` e ```app_backend```
+Este comando irá iniciar os containers chamados ```db```, ```app_backend```, criar e popular o banco de dados. 
+Existem três CPFs previamente cadastrados. 
 O servidor do backend já está disponível e é possível interagir com a API.
 Para fazer requisições localmente - utilizando o ThunderClient, por exemplo - utilize o endpoint ```http://localhost:3001/```
 ## Executando Testes
