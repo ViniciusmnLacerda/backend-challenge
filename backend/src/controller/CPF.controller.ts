@@ -21,4 +21,9 @@ export default class CPFController {
     await cpfService.delete(cpf);
     res.sendStatus(204);
   }
+
+  public getAll = async (req: Request, res: Response) => {
+    const CPFs = await cpfService.getAll();
+    res.status(200).json(CPFs);
+  }
 }

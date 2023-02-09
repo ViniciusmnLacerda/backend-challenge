@@ -29,4 +29,11 @@ export default class CPFService {
     if (!isCPFValid) throw new ErrorClient(404, 'NotFoundCpfException', 'CPF not found');
     await CPFModel.destroy({ where: { cpf }});
   }
+
+  public getAll = async () => {
+    const CPFs = await CPFModel.findAll({
+      attributes: { exclude: ['id'] }
+    });
+    return CPFs;
+  }
 }

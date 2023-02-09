@@ -22,4 +22,9 @@ cpfRouter.delete(
   new CPFController().remove,
 )
 
+cpfRouter.get(
+  '/',
+  new CPFController().getAll,
+)
+
 export default cpfRouter;
