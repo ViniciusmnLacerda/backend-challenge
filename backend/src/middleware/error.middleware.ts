@@ -8,7 +8,7 @@ const errorMiddleware: ErrorRequestHandler = (
   _next: NextFunction,
 ): Response => {
   if (err instanceof ErrorClient) {
-    return res.status(err.statusCode).json({ message: err.message });
+    return res.status(err.statusCode).json({ type: err.type, message: err.message });
   }
 
   return res.status(500).json({ message: 'Internal error' });
