@@ -65,22 +65,14 @@ describe('CPF service tests', function() {
     });
   });
 
-  // describe('removing cpf from list', function() {
-  //   it('with a cpf that is not in use should return error', async function() {
-  //     sinon.stub(CPFModel, 'destroy').resolves();
-  //     try {
-  //       await cpfService.delete(unsedCPF);
-  //     } catch (err) {
-  //       expect((err as Error).message).to.be.equal('CPF not found');
-  //     }
-  //   });
-
-  //   it('with valid valid cpf must be done successfully', async function() {
-  //     sinon.stub(CPFModel, 'findOne').resolves(CPFs[0] as ICPF | any);
-  //     sinon.stub(CPFModel, 'destroy').resolves()
-
-  //     await cpfService.delete(CPFInUse);
-  //     expect(cpfService.delete).to.be.calledWith(CPFInUse);
-  //   });
-  // });
+  describe('removing cpf from list', function() {
+    it('with a cpf that is not in use should return error', async function() {
+      sinon.stub(CPFModel, 'findOne').resolves(undefined);
+      try {
+        await cpfService.remove(unsedCPF);
+      } catch (err) {
+        expect((err as Error).message).to.be.equal('CPF not found');
+      }
+    });
+  });
 });

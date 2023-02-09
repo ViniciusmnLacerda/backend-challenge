@@ -24,7 +24,7 @@ export default class CPFService {
     return newCPF;
   }
 
-  public delete = async (cpf: string) => {
+  public remove = async (cpf: string) => {
     const isCPFValid = await this.findOne(cpf);
     if (!isCPFValid) throw new ErrorClient(404, 'NotFoundCpfException', 'CPF not found');
     await CPFModel.destroy({ where: { cpf }});

@@ -18,7 +18,7 @@ export default class CPFController {
 
   public remove = async (req: Request, res: Response) => {
     const { cpf } = req.params;
-    await cpfService.delete(cpf);
+    await cpfService.remove(cpf);
     res.sendStatus(204);
   }
 

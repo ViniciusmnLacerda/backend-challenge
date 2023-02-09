@@ -87,7 +87,7 @@ describe('CPF controller tests', function() {
 
       sinon.stub(CPFModel, 'findOne').resolves(CPFs[0] as ICPF | any);
       sinon.stub(CPFModel, 'destroy').resolves();
-      sinon.stub(cpfService, 'delete').resolves();
+      sinon.stub(cpfService, 'remove').resolves();
 
       await cpfController.remove(req, res);
       expect(res.sendStatus).to.have.been.calledWith(204);
