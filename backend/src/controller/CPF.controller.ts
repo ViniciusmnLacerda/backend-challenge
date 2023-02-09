@@ -15,4 +15,10 @@ export default class CPFController {
     const userCPF = await cpfService.getCPF(cpf);
     res.status(200).json(userCPF);
   }
+
+  public remove = async (req: Request, res: Response) => {
+    const { cpf } = req.params;
+    await cpfService.delete(cpf);
+    res.sendStatus(204);
+  }
 }

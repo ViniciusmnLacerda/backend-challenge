@@ -3,8 +3,11 @@ import ErrorClient from "../utils/ErrorClient";
 
 export default class CPFMiddleware {
   public validateCPF = (req: Request, res: Response, next: NextFunction): void => {
-    const { cpf } = req.body;
-    if (cpf.includes('.')  || cpf.includes('-') || cpf.length !== 11) 
+    let { cpf } = req.body;
+    if (!cpf) cpf = req.params.cpf;
+    console.log('cpf: ', cpf);
+    
+    if (cpf.includes('.') || cpf.includes('-') || cpf.length !== 11) 
       throw new ErrorClient(400, 'InvalidCpfException', 'CPF is not valid');
         
     const cpfSplit = cpf.split('');

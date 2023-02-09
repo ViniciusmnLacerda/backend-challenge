@@ -20,7 +20,13 @@ export default class CPFService {
     const isCPFAlreadyInUse = await this.findOne(cpf);
     if (isCPFAlreadyInUse) throw new ErrorClient(422, 'ExistsCpfException', 'CPF is already in use');
     const newCPF = await CPFModel.create({ cpf })
-      .then(({ cpf, createdAt }) => ({ cpf, createdAt }));
+      .then(({ cpf }) => ({ cpf }));
     return newCPF;
+  }
+
+  public delete = async (cpf: string) => {
+    const isCPFValid = await this.findOne(cpf);
+    if (!isCPFValid) throw new ErrorClient(404, 'NotFoundCpfException', 'CPF not found');
+    await CPFModel.destroy({ where: { cpf }});
   }
 }

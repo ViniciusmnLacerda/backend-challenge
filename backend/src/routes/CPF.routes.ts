@@ -16,4 +16,10 @@ cpfRouter.get(
   new CPFController().getCPF,
 )
 
+cpfRouter.delete(
+  '/:cpf',
+  cpfMidleware.validateCPF,
+  new CPFController().remove,
+)
+
 export default cpfRouter;
