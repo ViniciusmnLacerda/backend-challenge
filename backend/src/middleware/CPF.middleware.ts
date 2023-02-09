@@ -9,7 +9,7 @@ export default class CPFMiddleware {
         
     const cpfSplit = cpf.split('');
     const cpfIsValid = cpfSplit.some((digit: string) => digit !== cpfSplit[0]);
-    if (!cpfIsValid) throw new ErrorClient(400, 'InvalidCpfException', 'CPF is not valid');
+    if (!cpfIsValid) throw new ErrorClient(422, 'InvalidCpfException', 'CPF is not valid');
     
     const firstDigit = cpfSplit.reduce((acc: number, curr: string, index: number) => {
       if (index < 9) {
@@ -20,7 +20,7 @@ export default class CPFMiddleware {
 
     const isFirstTypeValid = ((firstDigit * 10) % 11 ) === +cpfSplit[9];
     
-    if (!isFirstTypeValid) throw new ErrorClient(400, 'InvalidCpfException', 'CPF is not valid');
+    if (!isFirstTypeValid) throw new ErrorClient(422, 'InvalidCpfException', 'CPF is not valid');
     
     const secondDigit = cpfSplit.reduce((acc: number, curr: string, index: number) => {
       if (index < 10) {
@@ -31,7 +31,7 @@ export default class CPFMiddleware {
 
     const isSecondTypeValid = ((secondDigit * 10) % 11 ) === +cpfSplit[10];
 
-    if (!isSecondTypeValid) throw new ErrorClient(400, 'InvalidCpfException', 'CPF is not valid');
+    if (!isSecondTypeValid) throw new ErrorClient(422, 'InvalidCpfException', 'CPF is not valid');
 
     next();  
   }
