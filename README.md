@@ -3,7 +3,7 @@
 # Contexto
 Este projeto trata-se de uma API que controla CPFs em um banco de dados. 
   
-## Técnologias usadas
+## Técnologias Utilizadas
 
 Back-end:
 > Desenvolvido usando: NodeJS, ExpressJS e TypeScript
@@ -15,27 +15,27 @@ Testes:
 ```bash
 cd backend-challenge && cd backend && npm install
 ``` 
-## Executando os containers do docker
-
+## Executando os Containers do Docker:
+> Execute o comando abaixo no diretório ```/backend```
   ```
-  cd backend-challenge && docker-compose up -d --build && cd backend && npm run db:reset
+  docker-compose up -d --build && npm run db:reset
   ```
 Este comando irá iniciar os containers chamados ```db```, ```app_backend```, criar e popular o banco de dados. 
 Existem três CPFs previamente cadastrados. 
 O servidor do backend já está disponível e é possível interagir com a API.
-Para fazer requisições localmente - utilizando o ThunderClient, por exemplo - utilize o endpoint ```http://localhost:3001/```
+Para fazer requisições localmente - com o ThunderClient, por exemplo - utilize o endpoint ```http://localhost:3001/```
 ## Executando Testes
 
-* Para rodar todos os testes unitários:
+* Para rodar todos os testes unitários execute no diretório ```/backend```:  
 
 ```bash
-    cd backend-challenge && cd backend && npm run test:unit
+    npm run test:unit
 ``` 
 
-* Para rodar todos os testes de integração:
+* Para rodar todos os testes de integração execute no diretório ```/backend```: 
 
 ```bash
-    cd backend-challenge && cd backend && npm run test:integration
+     npm run test:integration
 ``` 
 
 ## Rotas
