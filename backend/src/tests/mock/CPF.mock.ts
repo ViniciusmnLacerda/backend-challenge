@@ -16,8 +16,43 @@ const CPFs = [
 const CPFInUse = "92238233318"
 const unsedCPF = "25479514792"
 
+const CPFInUseInput = {
+  cpf: "92238233318",
+}
+
+const CPFWithDot = {
+  cpf: "922.382.333-18"
+}
+
 const newCPF = {
   cpf: "25479514792"
 }
 
-export { CPFs, CPFInUse, unsedCPF, newCPF }
+const CPFWrongLength = {
+  cpf: "922382318"
+}
+
+const CPFWrongDigit = {
+  cpf: "92238233398"
+}
+
+const CPFEqualDigits = {
+  cpf: "11111111111"
+}
+
+const CPFInput = {
+  cpf: "25479514792",
+}
+export {
+  CPFs,
+  CPFInUse,
+  unsedCPF,
+  newCPF,
+  CPFInUseInput,
+  CPFWithDot,
+  CPFWrongLength,
+  CPFWrongDigit,
+  CPFEqualDigits,
+  CPFInput,
+}
+

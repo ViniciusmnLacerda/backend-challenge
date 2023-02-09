@@ -8,7 +8,7 @@ export default class CPFMiddleware {
   }
 
 
-  private validatedigits = (cpfSplit: string[]) => {
+  private validateDigits = (cpfSplit: string[]) => {
     const firstDigit = cpfSplit.reduce((acc: number, curr: string, index: number) => {
       if (index < 9) {
         acc += +curr * (10 - index);
@@ -43,7 +43,7 @@ export default class CPFMiddleware {
     const cpfIsValid = cpfSplit.some((digit: string) => digit !== cpfSplit[0]);
     if (!cpfIsValid) throw new ErrorClient(422, 'InvalidCpfException', 'CPF is not valid');
     
-    this.validatedigits(cpfSplit);
+    this.validateDigits(cpfSplit);
 
     next();  
   }
