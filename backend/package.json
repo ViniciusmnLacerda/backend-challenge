@@ -6,7 +6,7 @@
   "scripts": {
     "build": "npx -y tsc",
     "dev": "nodemon --watch \"./src/**\" ./src/server.ts",
-    "db:reset": "npx -y tsc && npx sequelize-cli db:drop && npx sequelize-cli db:create && npx sequelize-cli db:migrate && npx sequelize-cli",
+    "db:reset": "npx -y tsc && npx sequelize-cli db:drop && npx sequelize-cli db:create && npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all",
     "test": "mocha -r ts-node/register ./src/tests/*$NAME*.{test,spec}.ts -t 10000 --exit"
   },
   "repository": {
