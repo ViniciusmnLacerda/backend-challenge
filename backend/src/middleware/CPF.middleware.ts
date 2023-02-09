@@ -2,18 +2,13 @@ import { NextFunction, Request, Response } from "express";
 import ErrorClient from "../utils/ErrorClient";
 
 export default class CPFMiddleware {
-  public validateCPF = (req: Request, res: Response, next: NextFunction): void => {
-    let { cpf } = req.body;
-    if (!cpf) cpf = req.params.cpf;
-    console.log('cpf: ', cpf);
-    
+  private validateFormat = (cpf: string) => {
     if (cpf.includes('.') || cpf.includes('-') || cpf.length !== 11) 
-      throw new ErrorClient(400, 'InvalidCpfException', 'CPF is not valid');
-        
-    const cpfSplit = cpf.split('');
-    const cpfIsValid = cpfSplit.some((digit: string) => digit !== cpfSplit[0]);
-    if (!cpfIsValid) throw new ErrorClient(422, 'InvalidCpfException', 'CPF is not valid');
-    
+    throw new ErrorClient(400, 'InvalidCpfException', 'CPF is not valid');
+  }
+
+
+  private validatedigits = (cpfSplit: string[]) => {
     const firstDigit = cpfSplit.reduce((acc: number, curr: string, index: number) => {
       if (index < 9) {
         acc += +curr * (10 - index);
@@ -35,6 +30,20 @@ export default class CPFMiddleware {
     const isSecondTypeValid = ((secondDigit * 10) % 11 ) === +cpfSplit[10];
 
     if (!isSecondTypeValid) throw new ErrorClient(422, 'InvalidCpfException', 'CPF is not valid');
+  }
+
+  public validateCPF = (req: Request, res: Response, next: NextFunction): void => {
+    let { cpf } = req.body;
+    if (!cpf) cpf = req.params.cpf;
+    
+    this.validateFormat(cpf);
+     
+    const cpfSplit = cpf.split('');
+   
+    const cpfIsValid = cpfSplit.some((digit: string) => digit !== cpfSplit[0]);
+    if (!cpfIsValid) throw new ErrorClient(422, 'InvalidCpfException', 'CPF is not valid');
+    
+    this.validatedigits(cpfSplit);
 
     next();  
   }
