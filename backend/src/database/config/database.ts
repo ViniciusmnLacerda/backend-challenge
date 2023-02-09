@@ -8,14 +8,6 @@ const config: Options = {
   host: process.env.DB_HOST || 'localhost',
   port: Number(process.env.DB_PORT) || 3002,
   dialect: 'mysql',
-  dialectOptions: {
-    timezone: '-03:00',
-    dateStrings: true,
-    typeCast: true,
-
-  },
-  timezone: "-03:00",
-  logging: false,
 }
 
 module.exports = config;

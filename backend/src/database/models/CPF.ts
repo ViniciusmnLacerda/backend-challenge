@@ -23,6 +23,7 @@ CPF.init({
     defaultValue: DataTypes.NOW,
   },
 }, {
+  underscored: true,
   sequelize: db,
   timestamps: false,
   modelName: 'cpf',
