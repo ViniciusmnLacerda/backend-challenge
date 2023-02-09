@@ -16,7 +16,7 @@ export default class CPFMiddleware {
         acc += +curr * (10 - index);
       }
       return acc;
-    }, 0)
+    }, 0);
 
     const isFirstTypeValid = ((firstDigit * 10) % 11 ) === +cpfSplit[9];
     
