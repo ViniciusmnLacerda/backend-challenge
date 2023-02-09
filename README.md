@@ -21,7 +21,8 @@ cd backend-challenge && cd backend && npm install
   cd backend-challenge && cd backend && docker-compose up -d --build
   ```
 Este comando irá iniciar os containers chamados ```db``` e ```app_backend```
-O servidor do backend já está disponível e é possível interagir com a API. 
+O servidor do backend já está disponível e é possível interagir com a API.
+Para fazer requisições localmente - utilizando o ThunderClient, por exemplo - utilize o endpoint ```http://localhost:3001/```
 ## Executando Testes
 
 * Para rodar todos os testes unitários:
@@ -98,11 +99,11 @@ O servidor do backend já está disponível e é possível interagir com a API.
 ```json
 [
   {
-    "cpf": <CPF passado pelo parâmetro>,
+    "cpf": <CPF cadastrado no banco de dados>,
     "createdAt": <Data do cadastro do CPF com o padrão ISO 8601 - UTC> 
   },
   {
-    "cpf": <CPF passado pelo parâmetro>,
+    "cpf": <CPF cadastrado no banco de dados>,
     "createdAt": <Data do cadastro do CPF com o padrão ISO 8601 - UTC> 
   },
 ...
