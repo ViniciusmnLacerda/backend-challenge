@@ -11,4 +11,9 @@ cpfRouter.post(
   new CPFController().create,
 )
 
+cpfRouter.get(
+  '/:cpf',
+  new CPFController().getCPF,
+)
+
 export default cpfRouter;
