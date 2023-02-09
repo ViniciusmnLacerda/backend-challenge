@@ -3,10 +3,19 @@ import ErrorClient from '../utils/ErrorClient';
 
 export default class CPFService {
   public findOne = async (cpf: string) => {
-    const userCpf = await CPFModel.findOne({ where: { cpf }});
-    if (!userCpf) throw new ErrorClient(404, 'NotFoundCpfException', 'CPF not found');
-    return cpf;
+    const userCPF = await CPFModel.findOne({ 
+      where: { cpf },
+      attributes: { exclude: ['id'] },
+    });
+    return userCPF;
   }
+
+  public getCPF = async (cpf: string) => {
+    const userCPF = await this.findOne(cpf);
+    if (!userCPF) throw new ErrorClient(404, 'NotFoundCpfException', 'CPF not found');
+    return userCPF;
+  }
+
 
   public create =  async (cpf: string) => {
     const isCPFAlreadyInUse = await this.findOne(cpf);
